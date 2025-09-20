@@ -2,8 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Eye, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const FeaturedIdeas = () => {
+  const navigate = useNavigate();
+
   const ideas = [
     {
       id: 1,
@@ -117,7 +120,12 @@ const FeaturedIdeas = () => {
                     negotiable
                   </span>
                 </div>
-                <Button variant="outline" size="sm" className="group-hover:bg-primary group-hover:text-white transition-all">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="group-hover:bg-primary group-hover:text-white transition-all"
+                  onClick={() => navigate(`/idea/${idea.id}`)}
+                >
                   View Details
                 </Button>
               </CardFooter>
@@ -127,7 +135,7 @@ const FeaturedIdeas = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <Button variant="outline" size="lg">
+          <Button variant="outline" size="lg" onClick={() => navigate('/browse')}>
             Explore All Ideas
           </Button>
         </div>
